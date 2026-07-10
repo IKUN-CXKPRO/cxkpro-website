@@ -1,0 +1,15 @@
+---
+import '../styles/global.css';
+const { title = 'Your Space' } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="个人创作者作品集与数字空间" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body><slot /></body>
+</html>

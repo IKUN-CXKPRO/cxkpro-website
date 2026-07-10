@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import characterImage from '../assets/image.png';
+import bandbbsIcon from '../assets/bandbbs_logo.png';
+import { Laptop, Smartphone, Watch } from 'lucide-astro';
+
+const projects = [
+	{
+		tag: 'Xiaomi Vela Quickapp',
+		title: 'Shell++',
+		description: '一个基于lua+quickapp的终端',
+		url: 'https://github.com/IKUN-CXKPRO/Shell-Plus-Plus',
+		icon: '/shell-icon.svg',
+		color: 'violet',
+	},
+	{
+		tag: '米坛知识库',
+		title: 'Bandbbs_knowledge_base',
+		description: 'Bandbbs_knowledge_base',
+		url: 'https://github.com/Bandbbs/Bandbbs_knowledge_base',
+		color: 'violet',
+		icon: bandbbsIcon.src,
+	}
+];
+
+const friendLinks = [
+	{ name: "IKUN_CXKPRO's Blog", domain: 'ikun-cxkpro.top', url: 'https://ikun-cxkpro.top', icon: 'https://ikun-cxkpro.top/_astro/CXKPRO.BjQ78cVB_ZorYIi.webp' },
+];
+---
+
+<Layout title="CXKPRO's WebSite">
+	<div class="site-shell">
+		<div class="grid-overlay" aria-hidden="true"></div>
+		<header class="topbar">
+			<a class="brand" href="#top" aria-label="回到首页">
+				<!-- <span class="brand-mark">✦</span> -->
+				<span>CXKPRO<span class="brand-dot">.</span>TOP</span>
+			</a>
+			<nav aria-label="主导航">
+				<a class="active" href="#top">首页</a>
+				<a href="#about">关于</a>
+				<a href="#projects">作品</a>
+				<a href="#experience">经历</a>
+				<a href="https://ikun-cxkpro.top" target="_blank" rel="noreferrer">博客</a>
+				<a href="#contact">联系</a>
+			</nav>
+			<a class="top-cta" href="#contact">Let's talk <span>↗</span></a>
+		</header>
+
+		<main id="top">
+			<section class="hero section-wrap">
+				<div class="hero-copy">
+					<p class="location"><span>⌖</span> SHANTOU, CHINA</p>
+					<h1><span class="gradient-accent">IKUN_</span><br /><span class="gradient-accent">CXKPRO</span></h1>
+					<p class="hero-text">我喜欢研究各种电子产品<br />我擅长VibeCoding<br />
+						我热爱开源精神<br />我是穿戴设备重度爱好者<br />我非常喜欢Eason！</p>
+					<div class="hero-actions">
+						<a class="button button-primary" href="#projects">看看作品 <span>↓</span></a>
+						<a class="button button-quiet" href="#about">认识我 <span>↗</span></a>
+					</div>
+				</div>
+				<div class="hero-art" aria-label="">
+					<div class="art-glow"></div>
+					<img src={characterImage.src} alt="" />
+					<span class="art-caption">@IKUN_CXKPRO<br /></span>
+				</div>
+			</section>
+
+			<!-- <section class="ticker" aria-label="">
+				<div>REVERSE ENGINEERING <span>✦</span> VIBE CODING <span>✦</span> OPEN SOURCE <span>✦</span> WEARABLES <span>✦</span> ELECTRONICS <span>✦</span> VIBE CODING</div>
+			</section> -->
+
+			<section class="experience-section section-wrap" id="experience">
+				<div class="section-heading">
+					<div><p class="eyebrow"></p><h2><span>成长经历？</span></h2></div>
+				</div>
+				<div class="experience-list">
+					<div class="experience-item"><span class="experience-year">2024.4</span><div><h3>汕头市澄海区2024年学生机器人大赛一等奖</h3><p>感谢指导老师</p></div><span class="experience-tag"></span></div>
+					<div class="experience-item"><span class="experience-year">2024.7</span><div><h3>受邀参观华为东莞松山湖基地</h3><p>参观到了华为通信设备的生产过程</p></div><span class="experience-tag"></span></div>
+				</div>
+			</section>
+
+			<section class="about-section section-wrap" id="about">
+				<div class="about-badge shell-badge" aria-label="Shell 图标"><span class="gradient-accent">&lt;_</span></div>
+				<div class="about-copy"><h2><span class="gradient-accent">熟悉的语言？</span></h2><p>我比较熟悉Python脚本和HTML前端的开发<br />会点Javascript、Lua</p>
+					<div class="hero-actions">
+						<a class="button button-primary" href="#projects">看看作品 <span>↓</span></a>
+						<a class="button button-quiet" href="#contact">联系我 <span>↗</span></a>
+					</div>
+				</div>
+				<div class="about-stats"><div><strong class="gradient-accent">VIBE CODING</strong><span>我的编程方式</span></div><div><strong class="gradient-accent">GPT5.6 Terra(Codex)</strong><span>主力AI</span></div></div>
+			</section>
+
+			<section class="section-wrap projects-section" id="projects">
+				<div class="section-heading">
+					<div><p class="eyebrow">PROJECTS</p><h2><span>作品/正在维护的项目</span></h2></div>
+					<a class="text-link" href="#contact">交流想法 <span>↗</span></a>
+				</div>
+				<div class="project-grid">
+					{projects.map((project, index) => (
+						<a class={`project-card ${project.color}`} href={project.url} target="_blank" rel="noreferrer">
+							<div class={`project-visual visual-${index + 1}`}>{project.icon ? <img class="project-icon" src={project.icon} alt={`${project.title} 图标`} /> : <span class="visual-glyph">{index === 0 ? '✦' : index === 1 ? '▦' : '◒'}</span>}<span class="visual-number">0{index + 1}</span></div>
+							<div class="project-meta"><p>{project.tag}</p><h3>{project.title}</h3><span>{project.description}</span></div>
+							<span class="card-arrow">↗</span>
+						</a>
+					))}
+				</div>
+			</section>
+
+			<section class="devices-section section-wrap" id="devices">
+				<div class="section-heading">
+					<div><p class="eyebrow"></p><h2><span>我的设备</span></h2></div>
+					<span class="devices-note"></span>
+				</div>
+				<div class="device-grid">
+					<div class="device-card device-phone"><span class="device-icon"><Smartphone size={38} strokeWidth={1.5} /></span><strong>手机</strong><small></small><ul><li><b>主力</b> Xiaomi 13</li><li><b>备用</b> Xiaomi 6</li><li><b>备用</b> iPhone 7 Plus</li></ul></div>
+					<div class="device-card device-computer"><span class="device-icon"><Laptop size={38} strokeWidth={1.5} /></span><strong>电脑</strong><small></small><ul><li><b>笔记本</b> MacBook Pro 2015</li><li><b>台式机</b> QN8G + RX580 2304SP</li></ul></div>
+					<div class="device-card device-wearable"><span class="device-icon"><Watch size={38} strokeWidth={1.5} /></span><strong>穿戴设备</strong><small></small><ul><li>Xiaomi 手环 7 Pro</li><li>Xiaomi 手环 9 Pro</li><li>Xiaomi 手表 S4 41mm</li><li>Xiaomi 手环 10 陶瓷版</li><li>Xiaomi 手环 10 Pro 陶瓷版</li><li>REDMI Watch 6</li></ul></div>
+				</div>
+			</section>
+
+			<section class="contact-section section-wrap" id="contact">
+				<h2 class="contact-title"><span>联系我</span></h2>
+				<div class="contact-list">
+					<a href="mailto:ikun_cxkpro@163.com"><strong>Email：</strong>ikun_cxkpro@163.com <span>↗</span></a>
+					<div><strong>QQ：</strong>3078517671</div>
+					<div><strong>Telegram：</strong>@IKUN_CXKPRO</div>
+				</div>
+			</section>
+		</main>
+
+		<section class="links-section section-wrap" id="links">
+			<div class="section-heading"><div><p class="eyebrow"></p><h2><span>友情链接</span></h2></div></div>
+			{friendLinks.map((link) => (
+				<a class="friend-link-card" href={link.url} target="_blank" rel="noreferrer">
+					<span class="friend-link-icon">{link.icon ? <img src={link.icon} alt={`${link.name} 图标`} /> : '↗'}</span><span><strong>{link.name}</strong><small>{link.domain}</small></span><span class="friend-link-arrow">→</span>
+				</a>
+			))}
+		</section>
+
+		<footer class="footer section-wrap"><div><span>© 2026 CXKPRO's WebSite</span><span>MADE IN <b>✦</b> GPT-5.6 Terra</span></div><a href="#top">BACK TO TOP ↑</a></footer>
+	</div>
+</Layout>
